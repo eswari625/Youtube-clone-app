@@ -9,7 +9,7 @@ pipeline{
         nodejs 'node16'
     }
     environment{
-        sonar_home= tool sonar-scanner
+        sonar_home=tool 'sonar-scanner'
     }
     stages{
         stage("Clean Workspace"){
