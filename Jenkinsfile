@@ -13,7 +13,7 @@ pipeline{
         }
         stage("Checkout git"){
             steps{
-                checkoutGit()
+                checkoutGit('https://github.com/eswari625/Youtube-clone-app.git', 'main')
             }
         }
         
