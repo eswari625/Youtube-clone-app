@@ -25,12 +25,22 @@ pipeline{
         }
         //sonarAnalysis
         stage("Sonarqube Analysis"){
+            when{
+                expression{
+                    params.action == 'create'
+                }
+            }
             steps{
                 sonarqubeAnalysis()
             }
         }
         //QualityGate
         stage("Quality Gate"){
+            when{
+                expression{
+                    params.action == 'create'
+                }
+            }
             steps{
                 qualityGate()
             }
@@ -38,7 +48,15 @@ pipeline{
 
         //npminstall
         stage("Install dependencies"){
-            npmInstall()
+            when{
+                expression{
+                    params.action == 'create'
+                }
+            }
+            steps{
+                npmInstall()
+            }
+           
         }
         
     }
