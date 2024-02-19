@@ -15,7 +15,7 @@ pipeline{
         }
         stage('Checkout from Git'){
             steps{
-                git branch: 'master', url: 'https://github.com/eswari625/Youtube-clone-app.git'
+                git branch: 'main', url: 'https://github.com/eswari625/Youtube-clone-app.git'
             }
         }
         stage("Sonarqube Analysis "){
