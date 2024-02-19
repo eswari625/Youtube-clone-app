@@ -3,6 +3,8 @@ pipeline{
     agent any
     parameters{
         choice(name: 'action', choices: 'create\ndestroy', description: 'Please select create or destroy')
+        string(name: 'userName', defaultValue: 'eswari', description: 'Please enter user name')
+        string(name: 'imageName', defaultValue: 'youtube', description: 'Please enter image name')
     }
     tools{
         jdk 'jdk17'
@@ -57,6 +59,18 @@ pipeline{
                 npmInstall()
             }
            
+        }
+
+        stage("Push docker image"){
+            steps{
+                script{
+                    def dockerhubUserName = params.userName
+                    def imageName = params.imageName
+
+                    dockerBuild(dockerhubUserName, imageName)
+
+                }
+            }
         }
         
     }
